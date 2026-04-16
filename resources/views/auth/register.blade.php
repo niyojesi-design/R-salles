@@ -4,10 +4,17 @@
 
         <!-- Name -->
         <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            <x-input-label for="full_name" :value="_('full_name')" />
+            <x-text-input id="full_name" class="block mt-1 w-full" type="text" name="full_name" :value="old('full_name')" required autofocus autocomplete="name" />
+            <x-input-error :messages="$errors->get('full_name')" class="mt-2" />
         </div>
+        <div >
+            <select value="{{ old('role') }}" name="role" id="role" 
+            class="block mt-1 w-full" required>
+                <option value="">Select Role</option>
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+            </select>
 
         <!-- Email Address -->
         <div class="mt-4">

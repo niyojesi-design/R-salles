@@ -21,9 +21,9 @@ use App\Http\Controllers\client\ReservationsController;
 */
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -34,8 +34,11 @@ Route::middleware('auth')->group(function () {
 Route::resource('categories', CategoryController::class);
 Route::resource('salles', SalleController::class);
 Route::resource('reservations', ReservationController::class);
-Route::get('/contact', [ContactController::class, 'show'])->name('contact.show');
-Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+// Route::get('/contact', [ContactController::class, 'show'])->name('contact.show');
+// Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
 
 require __DIR__.'/auth.php';
 

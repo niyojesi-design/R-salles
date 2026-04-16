@@ -13,7 +13,8 @@ class SalleController extends Controller
      */
     public function index()
     {
-        //
+        $salles = Salle::all();
+        return view('salles.index', compact('salles'));
     }
 
     /**
@@ -21,7 +22,9 @@ class SalleController extends Controller
      */
     public function create()
     {
-        //
+
+    $categories = \App\Models\Category::all();
+        return view('salles.create', compact('categories'));
     }
 
     /**
@@ -29,7 +32,8 @@ class SalleController extends Controller
      */
     public function store(StoreSalleRequest $request)
     {
-        //
+        Salle::create($request->validated());
+        return redirect()->route('salles.index')->with('success', 'Salle créée avec succès !');
     }
 
     /**
@@ -46,6 +50,7 @@ class SalleController extends Controller
     public function edit(Salle $salle)
     {
         //
+            return view('salles.edit', compact('salle'));
     }
 
     /**
@@ -53,7 +58,8 @@ class SalleController extends Controller
      */
     public function update(UpdateSalleRequest $request, Salle $salle)
     {
-        //
+        $salle->update($request->validated());
+        return redirect()->route('salles.index')->with('success', 'Salle mise à jour avec succès !');
     }
 
     /**

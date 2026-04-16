@@ -12,4 +12,12 @@ class Category extends Model
 
     protected $table = 'categories';
     protected $fillable = ['name'];
+
+    /**
+     * Get the salles for the category.
+     */
+    public function salles()
+    {
+        return $this->hasMany(Salle::class);
+    }
 }

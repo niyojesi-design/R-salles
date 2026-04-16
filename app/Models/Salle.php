@@ -10,5 +10,13 @@ class Salle extends Model
 {
     use HasFactory, SoftDeletes;
     protected $table = 'salles';
-    protected $fguarded = [];
+    protected $fillable = [
+        'name',
+        'description',
+        'category_id',
+        'capacity',
+        'location',
+        'image_path',
+        'price',
+    ];
 }
